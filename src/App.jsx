@@ -7,6 +7,7 @@ import Content from "./pages/Content"
 import Product from "./pages/Product"
 import ProductEntry from "./pages/ProductEntry"
 import Api from "./pages/Api"
+import EntryApi from "./pages/EntryApi"
 
 const App = () => {
   return (
@@ -23,6 +24,8 @@ const App = () => {
         <Route path="/product-entry"  element={<ProductEntry/>}/>
         <Route path="/product-update/:id"  element={<ProductEntry isUpdate/>}/>
         <Route path="/api" element={<Api/>}/>      
+        <Route path="/entry-api" element={<EntryApi/>}/>
+        <Route path="/update-api/:id" element={<EntryApi isUpdate/>}/>            
 
       </Route>
     </Routes>

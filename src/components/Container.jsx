@@ -10,16 +10,12 @@ const Container = ({children}) => {
             page :"/" 
         },
         {
-            label : "Detail",
-            page : "/detail"
-        },
-        {
             label : "Redux",
             page : "/redux"
 
         },
         {
-            label : "Product",
+            label : "State",
             page : "/product"
         },
         {
