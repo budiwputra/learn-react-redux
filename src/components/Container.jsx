@@ -6,21 +6,25 @@ const Container = ({children}) => {
     const location = useLocation()
     const navMenu = [
         {
-            label : "Home",
-            page :"/" 
-        },
-        {
             label : "Redux",
             page : "/redux"
 
         },
         {
-            label : "State",
-            page : "/product"
+            label : "State [Array]",
+            page : "/state-array"
         },
         {
-            label : "Api",
-            page : "/api"
+            label : "State [Object]",
+            page : "/state-object"
+        },
+        {
+            label : "Api [Array]",
+            page : "/api-array"
+        },
+            {
+            label : "Api [Object]",
+            page : "/api-object"
         }]
     return (
         <div>

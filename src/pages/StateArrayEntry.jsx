@@ -1,19 +1,19 @@
 import {useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import {addItem, deleteItem, editItem, setItems} from "../slicer/productSlice"
+import {addItem, deleteItem, editItem, setItems} from "../slicer/stateArraySlice"
 import { useNavigate, useParams } from "react-router"
 
 const ProductEntry = ({isUpdate}) => {
     const {id} = useParams()
     const formRef = useRef(null)
-    const product = useSelector(state => state.products)
+    const stateArray = useSelector(state => state.stateArray)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     useEffect(() => {
 
         if (isUpdate) {
-            const productItem = product.find(item => item.id === id)
+            const productItem = stateArray.find(item => item.id === id)
     
             formRef.current.title.value = productItem.title,
             formRef.current.category.value = productItem.category,
@@ -45,7 +45,7 @@ const ProductEntry = ({isUpdate}) => {
                         desc : e.target.desc.value
                     }))                 
                 }
-                navigate("/product")
+                navigate("/state-array")
             }}>
                 <label htmlFor="">Title</label>
                 <br />

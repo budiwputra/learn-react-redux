@@ -1,25 +1,25 @@
 import { useSelector, useDispatch } from "react-redux"
-import {addItem, deleteItem, setItems} from "../slicer/productSlice"
+import {addItem, deleteItem, setItems} from "../slicer/stateObjectSlice"
 import { useNavigate } from "react-router"
 
 
 const Product = () => {
 
-    const product = useSelector(state => state.products)
+    const stateObject = useSelector(state => state.stateObject.value)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     return (
         <div>
             <h2>Product</h2>
-            <button onClick={() => navigate("/product-entry")}>Add Product</button>
+            <button onClick={() => navigate("/state-object-entry")}>Add Product</button>
             
             <ul>
-                {product.map((item) => (
+                {stateObject.map((item) => (
                     <li key={item.id}>{`${item.id} - ${item.title} 
                     - ${item.category}
                     - ${item.price}
                     - ${item.desc}`}
-                    <button onClick={() => navigate(`/product-update/${item.id}`)}>Edit</button>
+                    <button onClick={() => navigate(`/state-object-update/${item.id}`)}>Edit</button>
                     <button onClick={() => dispatch(deleteItem(item.id))}>Delete</button>
                     </li>
                 ))}
@@ -32,10 +32,9 @@ const Product = () => {
                 desc : "Details"
             }))}>Auto Add Product</button>
             <button onClick={() => dispatch(setItems([]))}>Delete All Product</button>
-            {console.log("Data :", product)}
+            {console.log("Data :", stateObject)}
             <br />
             <br />
-
             
         </div>
     )

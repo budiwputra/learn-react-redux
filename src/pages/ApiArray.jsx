@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { fetchProducts, createProduct, editProduct, removeProduct } from "../slicer/apiProductSlice"
+import { fetchProducts, createProduct, editProduct, removeProduct } from "../slicer/apiArraySlice"
 import { useNavigate } from "react-router"
 
 const Api = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const productsApi = useSelector((state) => state.productsApi)
+    const apiArray = useSelector((state) => state.apiArray)
 
     useEffect(() => {
         dispatch(fetchProducts())
@@ -15,11 +15,11 @@ const Api = () => {
     return (
         <div>
             <h2>Api</h2>
-            <button onClick={() => navigate("/entry-api") }>Create New Product</button>
+            <button onClick={() => navigate("/api-array-entry") }>New Product</button>
             <ul>
-                {productsApi.map((item) => (
-                    <li key={item.id}>{`${item.title} - ${item.category} - ${item.price} - ${item.desc}`} 
-                    <button onClick={() => navigate(`/update-api/${item.id}`)}>Update</button>
+                {apiArray.map((item) => (
+                    <li key={item.id}>{`${item.title} - ${item.category} - ${item.desc} - ${item.price}`} 
+                    <button onClick={() => navigate(`/api-array-update/${item.id}`)}>Update</button>
                     <button onClick={() => dispatch(removeProduct(item.id))}>Remove</button>
                     </li>
                 ))}

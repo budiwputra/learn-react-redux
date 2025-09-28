@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router"
 import { useEffect, useRef } from "react"
-import { fetchProducts, createProduct, editProduct} from "../slicer/apiProductSlice"
+import { fetchProducts, createProduct, editProduct} from "../slicer/apiObjectSlice"
 import {  useSelector, useDispatch } from "react-redux"
 
 
@@ -9,10 +9,10 @@ const EntryApi = ({isUpdate}) => {
     const formRef = useRef(null)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const productsApi = useSelector((state) => state.productsApi)
+    const apiObject = useSelector((state) => state.apiObject.value)
     useEffect(() => {
         if (isUpdate) {
-            const productItem = productsApi.find(item => item.id === id)
+            const productItem = apiObject.find(item => item.id === id)
             formRef.current.title.value = productItem.title,
             formRef.current.category.value = productItem.category,
             formRef.current.desc.value = productItem.desc,
@@ -43,7 +43,7 @@ const EntryApi = ({isUpdate}) => {
                         desc : e.target.desc.value
                     }))
                 }
-                navigate("/api")
+                navigate("/api-object")
             }} action="">
                 <label htmlFor="">Title</label>
                 <br />
